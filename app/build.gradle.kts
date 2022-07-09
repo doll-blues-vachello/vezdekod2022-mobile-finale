@@ -11,7 +11,7 @@ android {
     compileSdk = 32
 
     defaultConfig {
-        applicationId = "ru.dollbluesvachello.vezdekodfinale2022"
+        applicationId = "ru.kheynov.vezdekodfinale2022"
         minSdk = 21
         targetSdk = 32
         versionCode = 1

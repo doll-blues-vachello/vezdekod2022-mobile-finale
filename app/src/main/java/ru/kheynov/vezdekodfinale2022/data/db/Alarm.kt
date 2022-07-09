@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "alarms")
 data class Alarm(
+    @ColumnInfo(name = "time") val time: String = "",
+    @ColumnInfo(name = "dates") val date: String = "",
     @PrimaryKey(autoGenerate = true) val id: Int? = null,
-    @ColumnInfo(name = "time") val time: Long = 0,
-    @ColumnInfo(name = "date") val date: Long = 0,
 )

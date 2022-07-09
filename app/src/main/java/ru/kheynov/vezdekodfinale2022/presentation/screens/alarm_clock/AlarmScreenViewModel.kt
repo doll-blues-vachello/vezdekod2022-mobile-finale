@@ -34,5 +34,11 @@ class AlarmScreenViewModel @Inject constructor(
             repository.insertAlarm(alarm)
         }
     }
+
+    fun removeAlarm(alarm: Alarm) {
+        viewModelScope.launch {
+            repository.deleteAlarm(alarm)
+        }
+    }
 }
 

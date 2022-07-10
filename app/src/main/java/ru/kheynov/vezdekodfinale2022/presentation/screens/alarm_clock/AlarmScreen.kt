@@ -58,9 +58,6 @@ fun AlarmScreen(
         )
     else {
         Scaffold(
-            topBar = { },
-            drawerContent = { },
-            bottomBar = { },
             floatingActionButton = {
                 FloatingActionButton(onClick = { showAlarmScheduler.value = true }) {
                     Icon(Icons.Filled.Add, contentDescription = "")

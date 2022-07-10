@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import dagger.hilt.android.AndroidEntryPoint
 import ru.kheynov.vezdekodfinale2022.presentation.screens.poke_quiz.PokeQuizScreen
 import ru.kheynov.vezdekodfinale2022.presentation.theme.VezdekodFinale2022Theme
@@ -16,7 +18,9 @@ class QuizActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             VezdekodFinale2022Theme() {
-                PokeQuizScreen(onComplete = { finish() })
+                Surface(color = MaterialTheme.colors.background) {
+                    PokeQuizScreen(onComplete = { finish() })
+                }
             }
         }
     }

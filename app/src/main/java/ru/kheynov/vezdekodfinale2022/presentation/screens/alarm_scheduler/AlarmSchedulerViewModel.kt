@@ -9,7 +9,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AlarmSchedulerViewModel @Inject constructor() : ViewModel() {
 
-    private var _dayOfWeekChooserState = Array(7) { false }
+    private var _dayOfWeekChooserState = Array(7) { true }
     val dayOfWeekChooserState = MutableLiveData<Array<Boolean>>()
 
     private fun updateDayChooserState() {

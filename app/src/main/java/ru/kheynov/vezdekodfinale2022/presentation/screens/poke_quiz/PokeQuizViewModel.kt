@@ -60,6 +60,6 @@ class PokeQuizViewModel @Inject constructor(
             if (res.find { pokemon.height == it.height } == null)
                 res.add(pokemon)
         }
-        return res.take(5).sortedWith(compareBy { it.height })
+        return res.shuffled().take(5).sortedWith(compareBy { it.height })
     }
 }

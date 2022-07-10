@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,6 +40,8 @@ fun AlarmListItem(
     modifier: Modifier = Modifier,
     alarm: Alarm,
     onRemove: () -> Unit = {},
+    isEnabled: Boolean = false,
+    onEnabled: (Boolean) -> Unit = {},
 ) {
     Column(modifier = modifier
         .fillMaxWidth()
@@ -47,12 +50,17 @@ fun AlarmListItem(
             .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column {
+            Column (Modifier.weight(1f)){
                 Text(text = alarm.time, fontSize = 36.sp)
                 Text(text = alarm.getDaysOfWeek().joinToString(" "))
             }
             Column(
-                Modifier.fillMaxSize(),
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally) {
+                Switch(checked = isEnabled, onCheckedChange = onEnabled)
+            }
+            Column(
+                Modifier.fillMaxSize().weight(1f),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.End) {
 
@@ -91,8 +99,7 @@ fun AlarmListItemPreview() {
         Surface(color = MaterialTheme.colors.background) {
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
                 items(4) {
-                    AlarmListItem(alarm = Alarm("15:30", "t,t,t,t,t,t,t"))
-
+                    AlarmListItem(alarm = Alarm("15:30", "t,t,f,t,t,t,t"))
                 }
             }
         }

@@ -8,5 +8,6 @@ import androidx.room.PrimaryKey
 data class Alarm(
     @ColumnInfo(name = "time") val time: String = "",
     @ColumnInfo(name = "dates") val date: String = "",
+    @ColumnInfo(name = "enabled") val enabled: Boolean = false,
     @PrimaryKey(autoGenerate = true) val id: Int? = null,
 )

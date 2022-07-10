@@ -19,7 +19,6 @@ private const val TAG = "AlarmScreenViewModel"
 class AlarmScreenViewModel @Inject constructor(
     private val repository: AlarmRepository,
 ) : ViewModel() {
-    val state = MutableLiveData<AlarmScreenState>()
 
     val alarms: LiveData<List<Alarm>> = repository.alarms.asLiveData()
 

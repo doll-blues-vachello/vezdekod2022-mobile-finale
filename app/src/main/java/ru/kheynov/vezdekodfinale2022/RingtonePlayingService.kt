@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.PendingIntent.FLAG_IMMUTABLE
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Build
@@ -29,7 +30,7 @@ class RingtonePlayingService : Service() {
         isLaunchedBefore = startId % 2
         Log.i(TAG, "onStartCommand: state: $state")
 
-        val notifyManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager?
+        val notifyManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager?
 
         val intentStopAlarm = Intent(this.applicationContext, AlarmBroadcastReceiver::class.java)
         intentStopAlarm.putExtra("state", "alarm_off")
@@ -37,23 +38,21 @@ class RingtonePlayingService : Service() {
         val pendingIntentStopAlarm = PendingIntent.getBroadcast(this, 0,
             intentStopAlarm, FLAG_IMMUTABLE)
 
-        val notificationPopup: Notification = Notification.Builder(this, "channelID")
+        val notificationPopup: Notification = Notification.Builder(this.applicationContext)
             .setContentTitle("An alarm is going off!")
             .setContentText("Click me!")
-            .setAutoCancel(true)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
-            .setContentIntent(pendingIntentStopAlarm)
-            .setAutoCancel(true)
+            .addAction(R.drawable.ic_baseline_delete_24, "Стоп", pendingIntentStopAlarm)
             .build()
         assert(state != null)
 
         if (state == "alarm_on") {
-            notifyManager!!.notify(0, notificationPopup)
+            notifyManager!!.notify(100, notificationPopup)
             mediaSong = MediaPlayer.create(this, R.raw.alarm).also { it.isLooping = true }
-            mediaSong!!.start()
+            mediaSong?.start()
         } else {
-            mediaSong!!.stop()
-            mediaSong!!.reset()
+            mediaSong?.stop()
+            mediaSong?.reset()
         }
 
         return START_NOT_STICKY

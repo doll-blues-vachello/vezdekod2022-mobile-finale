@@ -5,5 +5,4 @@ import ru.kheynov.vezdekodfinale2022.data.db.Alarm
 sealed interface AlarmScreenState {
     object Loading : AlarmScreenState
     data class Loaded(val alarms: List<Alarm>) : AlarmScreenState
-    object Error : AlarmScreenState
 }

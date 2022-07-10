@@ -108,7 +108,7 @@ fun AlarmScheduler(
             Text(text = "Выберите время будильника")
         }
 
-        Column() {
+        Column {
             Button(onClick = { viewModel.selectAllDays() }) {
                 Text(text = "Повторять всегда")
             }

@@ -14,7 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import ru.kheynov.vezdekodfinale2022.presentation.screens.alarm_clock.AlarmScreen
-import ru.kheynov.vezdekodfinale2022.presentation.screens.poke_quiz.PokeQuizScreen
 import ru.kheynov.vezdekodfinale2022.presentation.theme.VezdekodFinale2022Theme
 
 @AndroidEntryPoint

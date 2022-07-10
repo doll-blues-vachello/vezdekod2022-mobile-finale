@@ -17,7 +17,7 @@ class QuizActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            VezdekodFinale2022Theme() {
+            VezdekodFinale2022Theme {
                 Surface(color = MaterialTheme.colors.background) {
                     PokeQuizScreen(onComplete = { finish() })
                 }

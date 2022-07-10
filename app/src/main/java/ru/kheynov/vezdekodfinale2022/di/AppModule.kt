@@ -15,6 +15,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 import ru.kheynov.vezdekodfinale2022.data.api.PokeAPI
+import ru.kheynov.vezdekodfinale2022.data.api.PokemonRepository
 import ru.kheynov.vezdekodfinale2022.data.db.AlarmDatabase
 import ru.kheynov.vezdekodfinale2022.data.db.AlarmRepository
 import javax.inject.Singleton
@@ -25,7 +26,8 @@ import javax.inject.Singleton
 object AppModule {
 
     @Provides
-    fun provideBaseUrl(): String = "http://example.com"
+    @Singleton
+    fun provideBaseUrl(): String = "https://pokeapi.co/api/v2/"
 
     private val json = Json { ignoreUnknownKeys = true }
 
@@ -36,13 +38,18 @@ object AppModule {
         val contentType = "application/json".toMediaType()
         return Retrofit.Builder()
             .addConverterFactory(json.asConverterFactory(contentType))
-            .baseUrl(BASE_URL)
+            .baseUrl("https://pokeapi.co/api/v2/")
             .build()
     }
 
     @Provides
+    @Singleton
     fun providePokeApi(retrofit: Retrofit): PokeAPI =
         retrofit.create(PokeAPI::class.java)
+
+    @Provides
+    @Singleton
+    fun providePokeRepository(pokeAPI: PokeAPI): PokemonRepository = PokemonRepository(pokeAPI)
 
     @Provides
     @Singleton

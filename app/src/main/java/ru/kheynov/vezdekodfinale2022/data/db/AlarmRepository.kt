@@ -7,10 +7,6 @@ class AlarmRepository(
 ) {
     val alarms: Flow<List<Alarm>> = alarmDAO.getAlarms()
 
-    suspend fun getAlarmById(id: Int): Alarm? {
-        return alarmDAO.getAlarmById(id)
-    }
-
     suspend fun insertAlarm(alarm: Alarm) {
         alarmDAO.insertAlarm(alarm)
     }

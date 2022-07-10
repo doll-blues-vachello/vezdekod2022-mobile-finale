@@ -50,7 +50,7 @@ fun AlarmListItem(
             .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column (Modifier.weight(1f)){
+            Column(Modifier.weight(1f)) {
                 Text(text = alarm.time, fontSize = 36.sp)
                 Text(text = alarm.getDaysOfWeek().joinToString(" "))
             }
@@ -60,7 +60,9 @@ fun AlarmListItem(
                 Switch(checked = isEnabled, onCheckedChange = onEnabled)
             }
             Column(
-                Modifier.fillMaxSize().weight(1f),
+                Modifier
+                    .fillMaxSize()
+                    .weight(1f),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.End) {
 

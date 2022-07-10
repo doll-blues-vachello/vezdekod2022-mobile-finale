@@ -6,7 +6,7 @@ plugins {
     id("kotlinx-serialization")
 }
 
-val composeVersion = "1.2.0-rc02"
+val composeVersion = "1.2.0"
 android {
     compileSdk = 32
 
@@ -55,6 +55,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.appcompat:appcompat:1.4.2")
+    implementation("com.google.android.material:material:1.4.0")
     val composeVersion = "1.2.0-rc02"
     val navVersion = "2.4.2"
 
